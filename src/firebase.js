@@ -15,27 +15,27 @@ const saveData = (userId, name, email, imageUrl) => {
   set({
     username: name,
     email: email,
-
     picture: imageUrl,
     id: userId,
   });
 }
 
-// Mostrar usuario logueado en consola
-const welcome = () => {
-  const messageWelcome = document.getElementById('welcome-post');
-  let userLogin = firebase.currentUser;
-  firebase.database().ref('users/')
-    .on('value', (userRef) => {
-      const users = usersRef.val();
-      console.log(usersLogin);
-    })
-}
+// // Mostrar usuario logueado en consola
+// const welcome = () => {
+//   const messageWelcome = document.getElementById('welcome-post');
+//   let userLogin = firebase.currentUser;
+//   firebase.database().ref('users/')
+//     .on('value', (userRef) => {
+//       const users = usersRef.val();
+//       console.log(usersLogin);
+//     })
+// }
 
 // Registro de Usuarios Nuevos
 const registerNew = (email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((result) => {
+      console.log(result)
       const user = result.user;
       if (user.displayName == null) {
         username = document.getElementById('nameUser').value;
@@ -103,12 +103,13 @@ const loginGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider)
     .then((result) => {
+      console.log(result)
     const token = result.credential.accessToken;
     // Información de usuario
     const userData = result.user;
     console.log(userData);
     saveData(userData.uid, userData.displayName, userData.email, userData.photoURL);
-    window.location.href = 'timeline.html';
+    //window.location.href = 'timeline.html';
     })
     .catch((error) => {
       const errorCode = error.code;
