@@ -293,25 +293,35 @@ window.printPost = () => {
       </div>`
     }
                
+    firebase.database().ref('users/')
+      .once('value', (userRef) => {
+      const listUser = userRef.val();
+      // //const user = listUser[userId];
+      // console.log(listUser[id]);
+
     postsOrder.forEach((id) => {
-      const listPost = posts[id];
+      const post = posts[id];
+      const user = listUser[userId];
+      if (post.id === listUser.id) {
+        const userImage = user.picture;
+      }
       publications.innerHTML += `
         <div class="show-post" id=${id}>
           <div class="card post2">
             <div class="col s12 m12"> 
               <div class="card-stacked">
-                <span class="card-title">${listPost.author}</span>
-                <div class="actions">${listPost.privacy}</div>
+                <img src="${user.picture}" alt="" class="circle responsive-img" width="30px"><span class="card-title">${post.author}</span>
+                <div class="actions"><img src="${post.privacy === 'Público' ? '/img/planeta.png' : '/img/keyhole.png'} alt="icono de privacidad"></div>
               </div class="card-content">
-              <textarea class="textarea-post" cols="80" rows="30" disabled>${listPost.newPost}</textarea>
+              <textarea class="textarea-post" cols="80" rows="30" disabled>${post.newPost}</textarea>
               <div>
                 <div class="icon-like">
                   <a class="like-button" >
                     <img onclick="like('${id}')" src="img/heart-solid.svg" alt="icono de like" width="20px">
                   </a>
-                  <p class="count-like" id="show-count">${listPost.likeCount}</p>
+                  <p class="count-like" id="show-count">${post.likeCount}</p>
                 </div>
-                <div>${userId === listPost.id ? postActions(id) : ''}</div>
+                <div class="actions">${userId === post.id ? postActions(id) : ''}</div>
               </div>
             </div>
           </div>
@@ -320,6 +330,7 @@ window.printPost = () => {
        ` 
     })
   })
+})
 }
 
 // Imprimir sólo post del usuario logueado
@@ -341,7 +352,7 @@ const showMyPost = () => {
             <div class="col s12 m12"> 
               <div class="card-stacked">
                 <span class="card-title">${userPostId.author}</span>
-                <div class="actions">${userPostId.privacy}</div>
+                <div class="actions"><img src="${(userPostId.privacy === 'Público') ? 'img/worldwide.png' : 'img/keyhole.png'} alt="icono de privacidad"></div>
               </div>
               <textarea class="textarea-post" cols="80" rows="7" disabled>${userPostId.newPost}</textarea>
               <div>
