@@ -12,6 +12,7 @@ const validPost = document.getElementById('valid-post');
 // Inicializando el side-nav
 document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems);
 });
 
 // Inicializando select de privacidad del post

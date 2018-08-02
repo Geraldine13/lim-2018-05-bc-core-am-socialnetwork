@@ -6,7 +6,9 @@
   
 body {
   background-image:url(img/fondo-nutricion-1.jpg);
+  background-size: cover;
   font-family: Quicksand;
+  background-repeat: no-repeat;
 }
   
 .valid-inputs {
@@ -38,10 +40,10 @@ body {
 }
 
 .logo-qnut {
-  width: 70%;
-  height: 30%;
   margin-top: 10px;
   margin-bottom: 20px; 
+  width: 70%;
+  height: 30%;
 }
 
 .simple-text {

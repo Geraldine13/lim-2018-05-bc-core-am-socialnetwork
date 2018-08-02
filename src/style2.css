@@ -5,6 +5,7 @@
 body {
   background-position: top center;
   font-family: Quicksand;
+  color: #689f38;
 }
 
 .text-area {
@@ -16,6 +17,7 @@ body {
   border: solid #aed86f 1px;
   margin: 20px auto;
   margin-top: 50px;
+  resize: none;
 }
 
 .send-post {
@@ -49,11 +51,6 @@ body {
   margin: 10px;
 }
 
-.icon-like {
-  float: left;
-  
-}
-
 .show-post {
   padding: 15px;
   margin: 10px;
@@ -81,48 +78,17 @@ body {
    padding: 20px;
    margin: 25px;
    margin-top: 5px;
-   /* height: 180px; */
    min-height: 100px;
  }
 
- /* .select2{
-  float: left; 
-  width:  50%;
-} */
-
 .btn-publicar{
-  /* float: right; */
   width: 50%;
 }
 
 
-/* @media (max-width: 600px) {
-    .in-line{
-      width: 40%;
-      display: block;
-    }
-
-    .select2{
-      width:  100%;
-      display: block;
-    }
-
-    .btn-publicar{
-      float: left;
-      display: block;
-      width: 50%;
-    }
-
-  } */
-
 .center{
     text-align: center;
   }
-
-/* .in-line{
-  width: 40%;
-  display: inline-block;
-} */
 
 .red-message {
   color: red;
@@ -147,3 +113,7 @@ body {
   height: auto;
 }
 
+.select-wrapper input.select-dropdown {
+  font-size: 14px;
+  color: #727272;
+ }
