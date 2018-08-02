@@ -20,16 +20,6 @@ const saveData = (userId, name, email, imageUrl) => {
   });
 }
 
-// Mostrar usuario logueado en consola
-const welcome = () => {
-  const messageWelcome = document.getElementById('welcome-post');
-  let userLogin = firebase.currentUser;
-  firebase.database().ref('users/')
-    .on('value', (userRef) => {
-      const users = usersRef.val();
-    })
-}
-
 // Registro de Usuarios Nuevos
 const registerNew = (email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -234,8 +224,7 @@ window.savePostEdit = (id) => {
 window.like = (id) => {
   let userId = firebase.auth().currentUser.uid;
   const currentPost = document.getElementById(id);
-  // const likeButton = currentPost.querySelector('.like-button');
-
+  
   firebase.database().ref('posts/')
   .once('value', (postsRef) => {
     const listPost = postsRef.val();

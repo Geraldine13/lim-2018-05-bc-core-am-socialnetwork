@@ -58,7 +58,6 @@ registerButton.addEventListener('click', () => {
 });
 }
 
-
 // *********** Loguea al Usuario **************************
 if (loginButton != null) {
 loginButton.addEventListener('click', () => {
