@@ -274,10 +274,11 @@ window.printPost = () => {
       <a onclick="deletePost('${id}')" id="delete-button"><img src="img/icon-delete.png" alt="icono de eliminar" width="20px"></a>
       </div>`
     }
-               
+                   
     postsOrder.forEach((id) => {
       const post = posts[id];
-      publications.innerHTML += `
+      if (post.privacy === 'Público'){
+        publications.innerHTML += `
         <div class="show-post" id=${id}>
           <div class="card post2">
             <div class="col s12 m12"> 
@@ -300,6 +301,8 @@ window.printPost = () => {
         </div>
         </div>
        ` 
+      }
+      
     })
   })
 }

@@ -93,11 +93,11 @@ Como guía para el diseño de nuestro producto tomamos en cuenta a las grandes r
 
 Llevamos a cabo 5 entrevistas 2 de ellas grabadas en la que dejamos a los entrevistados expandirse en el tema, para guiar las mismas y tener resultados que nos ayudacen a planificar el producto llevamos esta guía de preguntas clave
 
-**¿Cuál fue tu última experiencia usando una red social sobre comida consciente?**
-**¿Qué te gusta de ellas?**
-**¿Qué les hace falta?**
-**¿Con qué frecuencia usas esta aplicación?**
-**¿Lograste algún beneficio siguiendo o usando estas redes?**
+**¿Cuál fue tu última experiencia usando una red social sobre comida consciente?**<br>
+**¿Qué te gusta de ellas?**<br>
+**¿Qué les hace falta?**<br>
+**¿Con qué frecuencia usas esta aplicación?**<br>
+**¿Lograste algún beneficio siguiendo o usando estas redes?**<br>
 
 **Entrevista 1 : Alexis Reyes / 23 años / estudiante / deportista**
 
@@ -147,8 +147,15 @@ En este proyecto trabajamos en 3 sprint, se organizó el flujo de trabajo con la
 
 ####  CONCLUSIONES  TEST ALTA FIDELIDAD Y HTML
 
-En el test de HTML, los usuarios manifestaron afinidad por el diseño, les pareció sencillo y fácil de usar, indicaron malestar por la demora del tiempo de carga, indicaron mejorar el tamaño de los botones, tener imágenes que identifiquen el fin de la red social.
+En el test de HTML, los usuarios manifestaron afinidad por el diseño, les pareció sencillo y fácil de usar, indicaron malestar por la demora del tiempo de carga, indicaron mejorar el tamaño de los botones, tener imágenes que identifiquen más el fin de la red social, se confirmó el correcto funcionamiento de la aplicación, este permitía:
 
+* Registro y logueo de usuarios (Correo, Google y Facebook).
+* Publicar post.
+* Editar, guardar y eliminar post, éste último con un mensaje de confirmación.
+* Sección de "Mis Publicaciones".
+* Like's de post.
+
+Además, tomamos las sugerencias para una futura implementación como: Buscador, perfil, subir imágenes, agregar amigos, comentar post, chat con especialistas en alimentación.
 
 ## Porcentaje del Test alcanzado
 
