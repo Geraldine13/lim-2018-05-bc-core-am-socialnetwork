@@ -11,8 +11,8 @@ firebase.initializeApp(config);
 
 // Guardar datos de login en BD
 const saveData = (userId, name, email, imageUrl) => {
-  firebase.database().ref('users/' + userId).
-  set({
+  firebase.database().ref('users/' + userId)
+  .set({
     username: name,
     email: email,
     picture: imageUrl,
