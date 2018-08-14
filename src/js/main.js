@@ -2,7 +2,7 @@ const faceButton = document.getElementById('faceButton');
 const googleButton = document.getElementById('googleButton');
 const registerButton = document.getElementById('registerButton');
 const loginButton = document.getElementById('loginButton');
-const formInicio = document.getElementById('formInicio');
+const formStart = document.getElementById('formStart');
 const formRegister = document.getElementById('formRegister');
 const registerLink = document.getElementById('registerLink');
 const emailLogin = document.getElementById('email-login');
@@ -17,10 +17,10 @@ const validInputs = document.getElementById('valid-inputs');
 const validInputs2 = document.getElementById('valid-inputs2');
 const errorPassword = document.getElementById('error-password');
 
-if (registerLink != null) {
+if (registerLink !== null) {
   registerLink.addEventListener('click', () => {
     formRegister.classList.remove('hidden');
-    formInicio.classList.add('hidden');
+    formStart.classList.add('hidden');
     nameUser.value = '';
     email.value = '';
     password.value = '';
@@ -30,7 +30,7 @@ if (registerLink != null) {
 }
 
 // ***************** Registra datos  ************************
-if (registerButton != null) {
+if (registerButton !== null) {
 registerButton.addEventListener('click', () => {
   nameUsers = nameUser.value;
   emailUser = email.value;
@@ -59,11 +59,10 @@ registerButton.addEventListener('click', () => {
 }
 
 // *********** Loguea al Usuario **************************
-if (loginButton != null) {
+if (loginButton !== null) {
 loginButton.addEventListener('click', () => {
   if (isValidLogin(emailLogin.value, passwordLogin.value)) {
     login(emailLogin.value, passwordLogin.value);
-    validation(); 
   } else {
     validInputs2.innerHTML = 'email y/o password incorrecto';
   }
@@ -71,7 +70,7 @@ loginButton.addEventListener('click', () => {
 }
 
 // *********** Resetea contraseña **************************
-if (updatePassword != null) {
+if (updatePassword !== null) {
 updatePassword.addEventListener('click', () => {
   if (emailLogin.value === '') {
     validInputs2.innerHTML = 'Ingrese un correo válido para resetear contraseña';
@@ -83,7 +82,7 @@ updatePassword.addEventListener('click', () => {
 }
 
 // *********** Loguea con Google **************************
-if (googleButton != null) {
+if (googleButton !== null) {
 googleButton.addEventListener('click', (e) => {
   if (e.target) {
     loginGoogle();
@@ -92,10 +91,10 @@ googleButton.addEventListener('click', (e) => {
 }
 
 // *********** Loguea al Facebook **************************
-if (faceButton != null) {
+if (faceButton !== null) {
 faceButton.addEventListener('click', (e) => {
   if (e.target) {
-    loginFacebook()
+    loginFacebook();
   }
 });
 }

@@ -39,7 +39,7 @@ const registerNew = (email, password) => {
       check();
       alert('Tu usuario ha sido registrado! \nConfirma el mensaje de verificación en tu correo y seguidamente puedes Iniciar Sesión');
       formRegister.classList.add('hidden');
-      formInicio.classList.remove('hidden');
+      formStart.classList.remove('hidden');
     })
     .catch((error) => {
       let errorCode = error.code;
@@ -55,6 +55,9 @@ const registerNew = (email, password) => {
 // Inicio de sesión de usuario existente
 let login = (email, password) => {
   firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(()=> {
+      window.location.href = 'timeline.html';
+    })
     .catch((error) => {
       let errorCode = error.code;
       let errorMessage = error.message;
@@ -77,11 +80,9 @@ const validation = () => {
       let isAnonymous = user.isAnonymous;
       let uid = user.uid;
       let providerData = user.providerData;
-    }
-    if (user.emailVerified) {
-      window.location.href = 'timeline.html';
     } else {
-      alert('Por favor valida tu correo');
+      alert('No está logueado');
+      window.location.href = 'index.html';
     }
   });
 }
@@ -102,6 +103,7 @@ const loginGoogle = () => {
       const errorMessage = error.message;
       const email = error.email;
       const credential = error.credential;
+      alert(error);
     });
 }
 
@@ -125,6 +127,7 @@ const resetPassword = (email) => {
 // Función para cerrar sesion
 const signOut = () => {
   firebase.auth().signOut().then(() => {
+    window.location.href = 'index.html';
   }).catch((error) => {
   });
 }
@@ -239,14 +242,12 @@ window.like = (id) => {
     }
 
     const objRefLike = postLikeRef.usersLikes;
-
-    console.log(objRefLike);
     
     if (objRefLike.indexOf(userId) === -1) {
       objRefLike.push(userId);
       postLikeRef.likeCount = objRefLike.length; 
     } else {
-      let dislike = objRefLike.filter(user => user != userId)
+      let dislike = objRefLike.filter(user => user !== userId)
       postLikeRef.usersLikes = dislike;
       postLikeRef.likeCount = dislike.length;
     }
@@ -260,6 +261,7 @@ window.like = (id) => {
 
 // Imprimir total post publicados
 window.printPost = () => { 
+  validation();
   firebase.database().ref('posts/')
   .on('value', (postsRef) =>{
     const posts = postsRef.val();
@@ -269,9 +271,9 @@ window.printPost = () => {
     let userId = firebase.auth().currentUser.uid;
     const postActions = (id) => {
       return `<div class="actions">
-      <a onclick="savePostEdit('${id}')" class="save-button hidden"><img src="img/icon-save.png" alt="icono de guardar" width="20px"></a>
-      <a onclick="editPost('${id}')" class="edit-button"><img src="img/icon-edit.png" alt="icono de editar" width="25px"></a>
-      <a onclick="deletePost('${id}')" id="delete-button"><img src="img/icon-delete.png" alt="icono de eliminar" width="20px"></a>
+      <a onclick="savePostEdit('${id}')" class="save-button hidden"><img src="../img/icon-save.png" alt="icono de guardar" width="20px"></a>
+      <a onclick="editPost('${id}')" class="edit-button"><img src="../img/icon-edit.png" alt="icono de editar" width="25px"></a>
+      <a onclick="deletePost('${id}')" id="delete-button"><img src="../img/icon-delete.png" alt="icono de eliminar" width="20px"></a>
       </div>`
     }
                    
@@ -284,13 +286,13 @@ window.printPost = () => {
             <div class="col s12 m12"> 
               <div class="card-stacked">
                 <span class="card-title">${post.author}</span>
-                <div class="actions"><img src="${post.privacy === 'Amigos' ? 'img/keyhole.png' : 'img/worldwide.png'}"></div>
+                <div class="actions"><img src="${post.privacy === 'Amigos' ? '../img/keyhole.png' : '../img/worldwide.png'}"></div>
               </div class="card-content">
               <textarea class="textarea-post" cols="80" rows="30" disabled>${post.newPost}</textarea>
               <div>
                 <div class="icon-like">
                   <a class="like-button">
-                    <img onclick="like('${id}')" src="img/icon-like1.png" alt="icono de like" width="20px">
+                    <img onclick="like('${id}')" src="../img/icon-like1.png" alt="icono de like" width="20px">
                   </a>
                   <p class="count-like" id="show-count">${post.likeCount}</p>
                 </div>
@@ -316,35 +318,37 @@ const showMyPost = () => {
     const listPostsOrder = Object.keys(listPosts).reverse();
     const publications = document.getElementById('publications');
     publications.innerHTML='';
-    
+
     listPostsOrder.forEach((id) => {
-      const userPostId = listPosts[id];  
-      publications.innerHTML += `
+      const userPostId = listPosts[id]; 
+      if (userPostId.id === userId) {
+        publications.innerHTML += `
         <div class="show-post" id=${id}>
           <div class="card post2">
             <div class="col s12 m12"> 
               <div class="card-stacked">
                 <span class="card-title">${userPostId.author}</span>
-                <div class="actions"><img src="${userPostId.privacy === 'Amigos' ? 'img/keyhole.png' : 'img/worldwide.png'}"></div>
+                <div class="actions"><img src="${userPostId.privacy === 'Amigos' ? '../img/keyhole.png' : '../img/worldwide.png'}"></div>
               </div>
               <textarea class="textarea-post" cols="80" rows="7" disabled>${userPostId.newPost}</textarea>
               <div>
                 <div class="icon-like">
                   <a class="like-button">
-                    <img onclick="like('${id}')" src="img/icon-like1.png" alt="icono de like" width="20px">
+                    <img onclick="like('${id}')" src="../img/icon-like1.png" alt="icono de like" width="20px">
                   </a>
                   <p class="count-like" id="show-count">${userPostId.likeCount}</p>
                 </div>
                 <div class="actions">
-                  <a onclick="savePostEdit('${id}')" class="save-button hidden"><img src="img/icon-save.png" alt="icono de guardar" width="20px"></a>
-                  <a onclick="editPost('${id}')" class="edit-button"><img src="img/icon-edit.png" alt="icono de editar" width="25px"></a>
-                  <a onclick="deletePost('${id}')" id="delete-button"><img src="img/icon-delete.png" alt="icono de eliminar" width="20px"></a>
+                  <a onclick="savePostEdit('${id}')" class="save-button hidden"><img src="../img/icon-save.png" alt="icono de guardar" width="20px"></a>
+                  <a onclick="editPost('${id}')" class="edit-button"><img src="../img/icon-edit.png" alt="icono de editar" width="25px"></a>
+                  <a onclick="deletePost('${id}')" id="delete-button"><img src="../img/icon-delete.png" alt="icono de eliminar" width="20px"></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
        ` 
+      }  
     })
   })
 }

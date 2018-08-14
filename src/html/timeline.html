@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Social Network - Q.Nutrition</title>
-  <link rel="icon" href="img/isotipo.png">
+  <link rel="icon" href="../img/isotipo.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-  <link rel="stylesheet" href="style2.css" />
+  <link rel="stylesheet" href="../css/timeline.css"/>
 </head>
 
 <!-- Muro -->
@@ -24,17 +24,17 @@
               <i class="material-icons">menu</i>
             </a>
             <ul class="right hide-on-med-and-down">
-              <li> <a href="#" id="start">Inicio</a> </li>
-              <li> <a href="#" id="myPost">Mis publicaciones</a> </li>
-              <li> <a href="#" id="signOut" class="signOut">Cerrar Sesión</a> </li>
+              <li> <a href="#" id="startHorizontal">Inicio</a> </li>
+              <li> <a href="#" id="myPostHorizontal">Mis publicaciones</a> </li>
+              <li> <a href="#" id="signOutHorizontal" class="signOut">Cerrar Sesión</a> </li>
             </ul>
           </div>
         </nav>
       
         <ul class="sidenav" id="mobile-demo">
-          <li><a href="#" id="start1">Inicio</a></li>
-          <li><a href="#" id="myPost1">Mi Muro</a></li>
-          <li><a href="#" id="signOut1" class="signOut">Salir</a></li>
+          <li><a href="#" id="startVertical">Inicio</a></li>
+          <li><a href="#" id="myPostVertical">Mi Muro</a></li>
+          <li><a href="#" id="signOutVertical" class="signOut">Salir</a></li>
         </ul>
   </header>
 
@@ -55,7 +55,7 @@
               <option id="friends" value="Amigos">Amigos</option>
               <option id="public" value="Público">Público</option>
             </select>
-            <label>Privacidad:</label>
+            <label for="privacy">Privacidad:</label>
           </div>
 
           <div class="in-line col s6 m6 l4">
@@ -74,10 +74,10 @@
 
   <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-  <script src="firebase.js"></script>
-  <script src="social_network.js"></script>
-  <script src="validations.js"></script>
-  <script src="main.js"></script>
+  <script src="../js/firebase.js"></script>
+  <script src="../js/social_network.js"></script>
+  <script src="../js/validations.js"></script>
+  <script src="../js/main.js"></script>
 </body>
 
 </html>

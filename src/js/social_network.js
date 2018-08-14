@@ -1,43 +1,42 @@
-const outButton = document.getElementById('signOut');
-const outButton1 = document.getElementById('signOut1');
+const outBtnHorizontal = document.getElementById('signOutHorizontal');
+const outBtnVertical = document.getElementById('signOutVertical');
 const publicButton = document.getElementById('buttonPost');
 const selectPrivacy = document.getElementById('privacy');
 const publications = document.getElementById('publications');
-const startButton = document.getElementById('start');
-const startButton1 = document.getElementById('start1');
-const myPostButton = document.getElementById('myPost');
-const myPostButton1 = document.getElementById('myPost1');
+const startBtnHorizontal = document.getElementById('startHorizontal');
+const startBtnVertical = document.getElementById('startVertical');
+const myPostBtnHorizontal = document.getElementById('myPostHorizontal');
+const myPostBtnVertical = document.getElementById('myPostVertical');
 const validPost = document.getElementById('valid-post');
 
 // Inicializando el side-nav
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.sidenav');
-  var instances = M.Sidenav.init(elems);
+document.addEventListener('DOMContentLoaded', () => {
+  const elems = document.querySelectorAll('.sidenav');
+  const instances = M.Sidenav.init(elems);
 });
 
 // Inicializando select de privacidad del post
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('select');
-  var instances = M.FormSelect.init(elems);
+document.addEventListener('DOMContentLoaded', () => {
+  const elems = document.querySelectorAll('select');
+  const instances = M.FormSelect.init(elems);
 });
     
 // Cerrar sesión (NavBar)
-if (outButton1 != null){
-outButton1.addEventListener('click', () => {
+if (outBtnVertical !== null){
+  outBtnVertical.addEventListener('click', () => {
   signOut();
-  window.location.href = 'index.html';
 });
 }
 
 // Cerrar sesión
-if (outButton != null){
-outButton.addEventListener('click', () => {
+if (outBtnHorizontal !== null){
+  outBtnHorizontal.addEventListener('click', () => {
   signOut();
   window.location.href = 'index.html';
 });
 }
 
-if (publicButton != null){
+if (publicButton !== null){
 publicButton.addEventListener('click', () => {
   let userId = firebase.auth().currentUser.uid;
   firebase.database().ref('/users/' + userId).once('value')
@@ -58,26 +57,26 @@ publicButton.addEventListener('click', () => {
 })
 }
 
-if (startButton != null){
-startButton.addEventListener('click', () => {
+if (startBtnHorizontal !== null){
+  startBtnHorizontal.addEventListener('click', () => {
   printPost();
 })
 }
  
-if (myPostButton != null){
-myPostButton.addEventListener('click', () => {
+if (myPostBtnHorizontal !== null){
+  myPostBtnHorizontal.addEventListener('click', () => {
   showMyPost();
 })
 }
 
-if (startButton1 != null){
-startButton1.addEventListener('click', () => {
+if (startBtnVertical !== null){
+  startBtnVertical.addEventListener('click', () => {
   printPost();
 })
 }
 
-if (myPostButton1 != null){  
-myPostButton1.addEventListener('click', () => {
+if (myPostBtnVertical !== null){  
+  myPostBtnVertical.addEventListener('click', () => {
   let userId = firebase.auth().currentUser.uid;
   showMyPost(userId);
 })

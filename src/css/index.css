@@ -5,7 +5,7 @@
 } 
   
 body {
-  background-image:url(img/fondo-nutricion-1.jpg);
+  background-image:url(../img/fondo-nutricion-1.jpg);
   background-size: cover;
   font-family: Quicksand;
   background-repeat: no-repeat;
@@ -72,10 +72,6 @@ body {
   margin-top: 25px;
   text-align: center;
   color: #ffffff;
-}
-
-.iconLoader {
-  background-image: url(img/ajax-loader.gif)
 }
 
 .inputs {
