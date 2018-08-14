@@ -11,7 +11,7 @@ firebase.initializeApp(config);
 
 // Guardar datos de login en BD
 const saveData = (userId, name, email, imageUrl) => {
-  firebase.database().ref('users/' + userId)
+  return firebase.database().ref('users/' + userId)
   .set({
     username: name,
     email: email,
@@ -92,11 +92,15 @@ const loginGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider)
     .then((result) => {
-    const token = result.credential.accessToken;
-    // Información de usuario
-    const userData = result.user;
-    saveData(userData.uid, userData.displayName, userData.email, userData.photoURL);
-    window.location.href = 'timeline.html';
+      // Información de usuario
+      const userData = result.user;
+      saveData(userData.uid, userData.displayName, userData.email, userData.photoURL)
+      .then( () => {
+        window.location.href = 'timeline.html';
+      })
+      .catch((error) => {
+        alert('Error en guardar los datos, por favor vuelva a loguarse.')
+      })
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -104,7 +108,8 @@ const loginGoogle = () => {
       const email = error.email;
       const credential = error.credential;
       alert(error);
-    });
+    })
+  
 }
 
 // Validación de correo al usuario
